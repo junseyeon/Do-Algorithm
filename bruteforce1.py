@@ -1,5 +1,6 @@
 import sys
 input = sys.stdin.readline
+
 ### 666 이 들어간 숫자
 '''
 n = int(input())
@@ -57,48 +58,3 @@ for i in range(1, N+1):
     for c in check:
         re += str(i).count(c)
 print(re) """
-
-# N=집 수, K=대피소 수 
-# 1.가능한 대피소 조합 만들기
-# 2.조합 중 max가 가장 적은 거리값 출력 
-""" from itertools import combinations
-N, K = map(int,input().split())
-x = [0] * N
-y = [0] * N
-for i in range(N):
-    x[i], y[i] = map(int,input().split())
-
-#1)
-comb = list(combinations(range(N),K))
-print(comb) """
-
-# 무조건 대피소가 집 위치;;;;;
-
-from itertools import combinations
-
-def mii():
-    return map(int, input().split())
-
-N, K = mii()
-INF = float("INF")
-x = [0] * N
-y = [0] * N
-for i in range(N):
-    x[i], y[i] = mii()
-
-def max_dist(comb):
-    rst = 0
-    for i in range(N):
-        min_dist = INF
-        for c in comb:
-            dist = abs(x[i] - x[c]) + abs(y[i] - y[c])
-        min_dist = min(min_dist, dist)
-        rst = max(rst, min_dist)
-    return rst
-
-ans = INF
-for comb in combinations(range(N), K):
-    ans = min(ans, max_dist(comb))
-
-print(ans)
-
