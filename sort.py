@@ -14,16 +14,19 @@
 import sys
 input = sys.stdin.readline
 N = int(input())
-arr = dict()
+
+# 처음 푼 방법1
+""" arr = dict()
 for i in range(N):
     name, kor, eng, math = input().split()
     arr[name]=[int(kor),int(eng),int(math)]
 
 re = sorted(arr.items(), key = lambda item: (-item[1][0],item[1][1], -item[1][2], item[0]))
 print(*list(map(lambda x: x[0], re)), sep='\n')
+ """
 
-
-# packing, unpacking
+# packing, unpacking , list 사용
+# 방법2
 arr = [] 
 for _ in range(N):
     name, *scores = input().split()  #socres: list 
