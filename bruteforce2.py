@@ -46,29 +46,27 @@ for c in comb:
 print(final) """
 
 #백준 2531번 , 회전초밥
+#브루트 포스 
 #k: 연속해서 먹을 수 있는 초밥 수, 
 #N: 접시수, d: 초밥 가지수, 쿠폰번호:c
 
-#1) 접시 수 만큼 연속된 d개의 조합을 모두 선택한다. 
-#2) 이 조합에서 쿠폰번호가 들어있으면 +1, 없으면 그대로 
-#3) 중복되는 숫자 제거하는 사용해서 가장 가지수가 많은 숫자 print()
+#1) 접시 수 만큼 연속된 d개의 조합을 구한다. (중복되는 수가 담기지 않도록 set사용)
+#2) 쿠폰번호 추가
+#3) 최대 길이 수 출력
 
-n,d,k,c = map(int, input().split())
-plate = []
-for i in range(n):
-    plate.append(int(input()))
+""" n,d,k,c = map(int, input().split())
+plate = [ int(input()) for _ in range(n)]
 
 max_sushi = 0
-# 틀린점: 같은 숫자가 여러번 반복되는 것을 길이에 포함하지 않기 위해 set사용
-
+"""
 #방법1
-for i in range(n):
+""" for i in range(n):
     tmp = set()
     tmp.add(c)
     for j in range(k):
         tmp.add(plate[i-n+j])
     #print(tmp , end=' ')
-    max_sushi = max(max_sushi, len(tmp))
+    max_sushi = max(max_sushi, len(tmp)) """
 
 #방법2
 """ for i in range(n):
@@ -76,10 +74,33 @@ for i in range(n):
         tmp = set(plate[i:i+k])
     else:
         tmp = set(plate[i:])
-        tmp.update(plate[:k-(n-i)])
-    #print(tmp, end=' ')
+        tmp.update(plate[:(i+k)%n])
+    print(tmp, end=' ')
     tmp.add(c)
-    #print(tmp)
+    print(tmp)
     max_sushi = max(max_sushi, len(tmp)) """
 
+
+#방법3. 백준 15961번 슬라이딩 윈도우 기법
+# 개념: https://learning-e.tistory.com/36
+from collections import defaultdict
+n,d,k,c = map(int, input().split())
+arr = [ int(input()) for _ in range(n)]
+arr = arr + arr[:k-1] 
+max_sushi = 0
+left , right = 0, 0
+window = defaultdict()
+window[c] +=1
+
+while right < k:  #처음 k개로 초기값 만들기 
+    window[arr[right]] +=1
+    right+=1
+
+for _ in range(n-1):
+    max_sushi = max(max_sushi, len(window))    
+    window[arr[right]] +=1
+    window[arr[left]] -=1
+    if window[arr[left]==0]: window.pop(arr[left])
+    right+=1
+    left+=1
 print(max_sushi)
