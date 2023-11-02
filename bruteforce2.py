@@ -14,6 +14,7 @@ for i in range(N):
 comb = list(combinations(range(N),K)) #key point
 INF  = float("INF")  #key point
  """
+ 
 #방법1
 """ 
 re=INF
