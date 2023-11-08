@@ -75,43 +75,47 @@ print(result)
 import sys
 
 def find_group_id(N, M, edges):
+    # 그래프 초기화
     graph = [[] for _ in range(N)]
 
+    # 간선 정보를 이용하여 그래프 생성
     for u, v in edges:
         graph[u - 1].append(v - 1)
         graph[v - 1].append(u - 1)
 
     def dfs(node, group_id):
         stack = [node]
-        group = {node}
+        group = {node}  # 현재 그룹을 저장할 집합 초기화
 
         while stack:
-            current = stack.pop()
+            current = stack.pop()  # 스택에서 현재 노드를 꺼냅니다.
+            
+            # 현재 노드의 이웃 노드를 확인합니다.
             for neighbor in graph[current]:
-                if neighbor not in group:
-                    group.add(neighbor)
-                    stack.append(neighbor)
+                if neighbor not in group:  # 이웃 노드가 현재 그룹에 속하지 않는 경우
+                    group.add(neighbor)  # 그룹에 이웃 노드를 추가합니다.
+                    stack.append(neighbor)  # 스택에 이웃 노드를 추가하여 나중에 탐색합니다.
 
         return group
 
-    max_group_size = 0
-    group_with_max_size = set()
+    max_group_size = 0  # 가장 큰 그룹의 크기 초기화
+    group_with_max_size = set()  # 가장 큰 그룹을 저장할 집합 초기화
 
+    # 모든 노드에 대해 DFS 수행
     for i in range(N):
-        group = dfs(i, i)
-        group_size = len(group)
+        group = dfs(i, i)  # DFS를 통해 그룹 찾기
+        group_size = len(group)  # 현재 그룹의 크기 계산
         
         if group_size > max_group_size:
-            max_group_size = group_size
-            group_with_max_size = group
+            max_group_size = group_size  # 더 큰 그룹을 찾았을 때 업데이트
+            group_with_max_size = group  # 가장 큰 그룹 업데이트
         elif group_size == max_group_size:
-            group_with_max_size.update(group)
+            group_with_max_size.update(group)  # 크기가 같은 그룹을 추가로 저장
 
-    return min(group_with_max_size) + 1
+    return min(group_with_max_size) + 1  # 가장 작은 번호의 사람을 반환
 
-if __name__ == "__main__":
-    N, M = map(int, sys.stdin.readline().split())
-    edges = [list(map(int, sys.stdin.readline().split())) for _ in range(M)]
+N, M = map(int, sys.stdin.readline().split())
+edges = [list(map(int, sys.stdin.readline().split())) for _ in range(M)]
 
-    result = find_group_id(N, M, edges)
-    print(result)
+result = find_group_id(N, M, edges)
+print(result)
