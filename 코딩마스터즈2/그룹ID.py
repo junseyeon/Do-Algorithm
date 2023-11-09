@@ -29,7 +29,7 @@ print(min(min_value)) """
 
 
 # 방법2 리스트 사용 
-import sys
+""" import sys
 
 N, M = map(int, sys.stdin.readline().split())
 arr = []
@@ -68,7 +68,7 @@ for i in arr:
 # 가장 큰 그룹을 찾아서 그 중 가장 작은 번호를 출력
 largest_group = max(groups, key=len)
 result = min(largest_group)
-print(result)
+print(result) """
 
 
 #방법3 dfs 사용
