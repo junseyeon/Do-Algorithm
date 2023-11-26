@@ -39,15 +39,14 @@ def is_prime(n):
     for i in range(2, int(n**0.5)+1):
         if n % i == 0: return False
     return True
-chk=0
-cnt=2  #소수 시작 번호 
+chk=0  # 타겟 소수
+cnt=2  # 검증용 소수 시작 번호
 
 while chk < k:
     if is_prime(cnt):
-        target = str(cnt) # 맞추려는 소수 
-        tmp = True 
-        if arr[chk] in target:
+        prime = str(cnt) # 맞추려는 소수
+        if arr[chk] in prime:
             chk+=1
-            print(cnt)           
+            #print(cnt)
     cnt+=1
 print(cnt-1)
