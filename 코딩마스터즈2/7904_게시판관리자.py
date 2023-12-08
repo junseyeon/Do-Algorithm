@@ -6,7 +6,7 @@ buy our merch"에 광고 차단 필터가 적용되었다면, 악성 사용자�
 '''
 
 import sys
-
+import itertools
 N = int(sys.stdin.readline())
 arr1 = sys.stdin.readline().strip().split()
 arr_d = {v: i for i, v in enumerate(arr1)}
@@ -16,14 +16,33 @@ v1 = list(arr_d.values())
 v2 = list(arr2_d.values())
 re = 0
 
-for c1 in range(N):
-    for c2 in range(c1 + 1, N):
-        v1[c1], v1[c2] = v1[c2], v1[c1]
-        if 2 == sum(1 for char1, char2 in zip(v1, v2) if char1 != char2):
-            re += 1
-        v1[c2], v1[c1] = v1[c1], v1[c2]
+diff = sum(1 for char1, char2 in zip(v1, v2) if char1 != char2)
+if diff==2: print(0)
+elif diff==1: print(2)
+else: print(diff)
+#print( list(itertools.permutations(range(diff), 3)))
 
-print(re)
+
+
+# import sys
+#
+# N = int(sys.stdin.readline())
+# arr1 = sys.stdin.readline().strip().split()
+# arr_d = {v: i for i, v in enumerate(arr1)}
+# arr2 = sys.stdin.readline().strip().split()
+# arr2_d = {i: arr_d[i] for i in arr2}
+# v1 = list(arr_d.values())
+# v2 = list(arr2_d.values())
+# re = 0
+#
+# for c1 in range(N):
+#     for c2 in range(c1 + 1, N):
+#         v1[c1], v1[c2] = v1[c2], v1[c1]
+#         if 2 == sum(1 for char1, char2 in zip(v1, v2) if char1 != char2):
+#             re += 1
+#         v1[c2], v1[c1] = v1[c1], v1[c2]
+#
+# print(re)
 
 # import sys
 # from itertools import combinations
