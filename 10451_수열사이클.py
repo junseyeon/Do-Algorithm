@@ -25,20 +25,22 @@ for link in arr:
     print(re)
 '''
 
-import sys
-t =int(sys.stdin.readline()) #테스트 케이스 개수
 def DFS(v):
-    visited[v] = True # 현재 해당 노드 방문 처리
-    
+    if not visited[v]:
+        visited[v] = True  # 현재 해당 노드 방문 처리
+        DFS(per[v]-1)
+    return
 
-for i in range(t):
+t =int(sys.stdin.readline()) #테스트 케이스 개수
+
+for _ in range(t):
     n = int(sys.stdin.readline())  # 순열크기
-    per = list(map(n.split()))
+    per = list(map(int, input().split()))
     cycle = 0
-    visited = [False]+(n+1) #방문기록(false 초기화,첫번째는 사용x)
+    visited = [False]*(n) #방문기록(false 초기화,첫번째는 사용x)
 
-    for j in range(1,len(per)):
-        if not visited[i]: #인접 노드가 방문되지 않은 상태라면
+    for j in range(n):
+        if not visited[j]: #인접 노드가 방문되지 않은 상태라면
             DFS(j) #함수로 방문 진행
             cycle += 1
     print(cycle)
