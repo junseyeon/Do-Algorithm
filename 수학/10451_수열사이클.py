@@ -24,6 +24,7 @@ for link in arr:
         i+=1
     print(re)
 '''
+import sys
 
 def DFS(v):
     if not visited[v]:
