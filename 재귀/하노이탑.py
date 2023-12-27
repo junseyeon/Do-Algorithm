@@ -15,4 +15,3 @@ def hanoi(num, start, other, end):
 n = int(input())
 print(pow(2,n)-1)
 hanoi(n,1,2,3)
-
