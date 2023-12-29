@@ -14,7 +14,7 @@ for _ in range(n):
 arr = arr+arr[:k-1]
 
 max_re = 0 
-window = defaultdict(int)🥈
+window = defaultdict(int)
 window[c] += 1 
 
 for i in range(k):
