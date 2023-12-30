@@ -25,3 +25,4 @@ re = 0
 for i in range(n):
     re += abs(loc_x[i] - x_mid) + abs(loc_y[i] - y_mid)
 print(re)
+
