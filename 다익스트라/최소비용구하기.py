@@ -1,3 +1,5 @@
+# https://www.acmicpc.net/problem/1916
+
 import sys
 import heapq
 input = sys.stdin.readline
@@ -7,7 +9,7 @@ M = int(input())  #간선 (버스의 개수)
 
 graph = [[] for _ in range(N + 1)]
 INF = float("INF")
-distance = [INF] * (N+1)
+distance = [INF] * (N+1)   # 구해야 할 비용의 리스트 표 
 
 for _ in range(M):
     a, b, c = map(int, input().split())  #출발 ,도착, 비용 
@@ -20,7 +22,6 @@ def dijkstra(start):
     heapq.heappush(q,(0,start))
     distance[start]=0
     while q:
-        #print(distance)
         cost, now = heapq.heappop(q)
         if distance[now] < cost: continue
         for i in graph[now]:
