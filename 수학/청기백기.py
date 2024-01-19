@@ -21,4 +21,4 @@ N = int(input())
 
 # 방법2 : 흑과 백이 되는 경우를 모두 출력해 보니 어떤수의 제곱이면 백이 된다.
 #import math
-print( int(N ** 0.5))
+print(int(N ** 0.5))
