@@ -22,10 +22,8 @@ for t, l, r in arr:
     if t==1:
         re = (start + (a + ((r-1)*d))) * (r-l+1) // 2
     else:
-        a = start
-        b = start+d
-        for i in range(r-l+1):
-            re = GCD(a, b)
-            a = b
-            b += d
+        if l == r:
+            re=start
+        else:
+            re = GCD(a, d)
     print(re)
