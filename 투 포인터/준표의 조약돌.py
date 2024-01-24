@@ -6,7 +6,7 @@
 '''
 
 import sys
-sys.stdin = open('../input.txt')
+#sys.stdin = open('../input.txt')
 input = sys.stdin.readline
 
 N, B, W = map(int, input().split())
@@ -17,9 +17,6 @@ right = 0
 re = 0
 
 while right < N:
-    if rock_count['W'] >= W and rock_count['B'] <= B:
-        re = max(re, sum(rock_count.values()))
-
     if rock[right] == "W":          #흰 조약돌
         rock_count['W'] += 1
         right += 1
@@ -30,5 +27,7 @@ while right < N:
         else:
             rock_count[rock[left]] -= 1
             left += 1
-    print(rock_count)
+    if rock_count['W'] >= W and rock_count['B'] <= B:
+        re = max(re, sum(rock_count.values()))
+    #print(rock_count)
 print(re)
