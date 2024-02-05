@@ -10,8 +10,8 @@ hap = [0]
 for i in arr:
     hap.append(hap[-1] + i)
 
-#print(arr)
-#print(hap)
+# print(arr)
+# print(hap)
 cnt = 0 
 for i in arr:
     if abs(i - M) in hap:
