@@ -26,8 +26,8 @@ for i in Narr:
 
 print(hi, arc, same)
 
-from bisect import bisect_left, bisect_right
 
+#from bisect import bisect_left, bisect_right
 # li = [10,15,3,6,10]
 # k  = 19
 # li.sort()
