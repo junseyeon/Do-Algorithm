@@ -2,10 +2,10 @@
 # https://www.acmicpc.net/problem/10816
 
 '''
-숫자카드1 과는 다르게 
+숫자카드1 과는 다르게 같은 숫자의 개수를 카운팅 해야 함. 일반적인 이진탐색으로는 불가. (그 이유는 두 배열의 합에도 나옴)
 
-방법 1: bisect 모듈 사용
-방법 2: dictionary 사용 
+방법 1: bisect 모듈 사용 0.9초
+방법 2: dictionary 사용 0.6초
 '''
 import sys, bisect
 sys.stdin = open('input.txt')
@@ -39,5 +39,3 @@ for i in arr2:
     else:
         re.append(0)
 print(*re)
-
-    
