@@ -18,8 +18,8 @@ for i in Narr:
     l = bisect.bisect_left(Marr, i)
     r = bisect.bisect_right(Marr, i)   # 동일한 숫자가 여러개 있을 수 있음으로 
     #print(i, l, r)
-    if l != M and i == Marr[l]:  # bisect_left([10,15,3,6,10], 19) index_error
-        same += r-l 
+    if l != M and i == Marr[l]:  # bisect_left([10,15,3,6,10], 19) index_error 
+        same += r-l              # 동일한 숫자가 여러개 일때 same의 개수 올려줘야 함!!
     hi += l
     arc += M-r
     print(i,": " , hi, arc, same)
