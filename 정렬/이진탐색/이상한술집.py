@@ -19,7 +19,7 @@ while left<=right:
     tmp =0
     for i in arr:
         tmp += i // mid
-    # if tmp == K:          # K잔이 아닐 때 re가 최대값일 수 있다?
+    # if tmp == K:          # K잔이 아닐 때 re가 최대값일 수 있다? ex) 200 600 3명이 나누면 200이 최대인데 k는 4
     #     re = mid     
     if tmp < K:
         right = mid -1
