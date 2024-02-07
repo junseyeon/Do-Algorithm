@@ -1,31 +1,29 @@
 # https://www.acmicpc.net/problem/13423
 '''
-방법1 완전탐색 시간초과 
-방법2 이진탐색,,, 
+* 입력과 동시에 풀이 진행하기! *
+방법1 완전탐색 시간초과 -> 17번, 23번 수정 list를 dict로 만들기. 
+* 해결 방법 * 
+dictionary 검색은 O(1)
+list 검색은 O(N)
 '''
 import sys
 sys.stdin = open('input.txt')
 input = sys.stdin.readline
 
 T = int(input())
-Ns = []
-arrs = []
+re = [0]*T
 for i in range(T):
     N = int(input())
-    Ns.append(N)
     arr = list(map(int, input().split()))
     arr.sort()
-    arrs.append(arr)
-#print(arrs)
-re = [0]*T
+    dic = dict.fromkeys(arr)     # 리스트를 dictionary로 변경 dict.fromkeys(리스트, 초기값) 기본 초기값 None
 
-for t in range(T):
-    for i in range(Ns[t]):
-        for j in range(Ns[t]-1, i, -1):
-            tmp = (arrs[t][i] + arrs[t][j]) / 2
+    for k in range(N):
+        for j in range(N-1, k, -1):
+            tmp = (arr[k] + arr[j]) / 2
             #print(tmp)
-            if tmp in arrs[t]:
-                re[t] += 1
+            if tmp in dic:
+                re[i] += 1
                 #print(i,j,tmp)
 for i in re:
     print(i)
