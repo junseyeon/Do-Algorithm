@@ -10,12 +10,10 @@ input = sys.stdin.readline
 #     num = int(input())
 #     if num == 0:  #출력+제거/절댓값이 작은 것
 #         if pq and mq:
-#             if pq[0] == mq[0]:
-#                 print(-hq.heappop(mq))
-#             elif pq[0] > mq[0]:
-#                 print(-hq.heappop(mq))
-#             else:
+#             if pq[0] < mq[0]:
 #                 print(hq.heappop(pq))
+#             else: #  pq[0] == mq[0], pq[0] > mq[0]:
+#                 print(-hq.heappop(mq))
 #         elif pq:
 #             print(hq.heappop(pq))
 #         elif mq:
@@ -25,7 +23,7 @@ input = sys.stdin.readline
 #     else:
 #         if num > 0: hq.heappush(pq, num)
 #         else: hq.heappush(mq, abs(num))
-#
+
 
 # 방법2: tuple로 앞에 abs로 우선순위르 판별하고 실제값은 뒤에다가
 N = int(input())

@@ -9,7 +9,7 @@ max_n = []
 
 for i in range(N):
     name=input().strip()
-    if name in sell.keys():
+    if name in sell: # name in sell.keys() 와 같음
         sell[name]+=1
     else:
         sell[name]=1
