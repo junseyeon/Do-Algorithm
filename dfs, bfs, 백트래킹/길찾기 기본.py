@@ -21,5 +21,13 @@ def bfs(start_y, start_x):
             if valid_coord(ny, nx) and chk[ny][nx]:
                 q.append((ny,nx))
 
+def dfs(x, y):
+    chk[x][y] = True
+    for i in range(4):
+        ny = y + dy[i]
+        nx = x + dx[i]
+        if valid_coord(ny, nx) and chk[ny][nx]:
+            dfs(nx, ny)
+
 bfs(0,0)
 
