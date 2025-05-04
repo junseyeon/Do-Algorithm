@@ -1,5 +1,5 @@
 '''
-연결 리스트
+인접 리스트
 '''
 def dfs(graph, v, visited):
     visited[v] = True
@@ -23,3 +23,23 @@ graph = [
 print(graph)
 visited = [False] * 9  # 0을 제외하니깐 +1 많게
 dfs(graph, 1, visited)
+
+##################################
+
+from collections import deque
+N = 10
+def bfs(start):
+    visited = [False] * (N + 1)
+    que = deque()
+    que.append(start)
+    visited[start] = True
+
+    while que:
+        node = que.popleft()
+        print(node)
+        for a in arr[node]:
+            if not visited[a]:
+                que.append(a)
+                visited[a] = True
+
+bfs(1)

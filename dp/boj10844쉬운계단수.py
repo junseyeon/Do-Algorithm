@@ -52,8 +52,7 @@ mod = 1_000_000_000
 cache = [[0]*10 for _ in range(n)]
 def dp(n,su):
     if n==0:
-        if su==0: return 0
-        else: return 1
+        return 1 if su>0 else 0
     if su == 0:
         if  cache[n-1][su+1]: return cache[n-1][su+1]
         cache[n][su] = dp(n-1, su+1)
@@ -67,16 +66,13 @@ def dp(n,su):
         cache[n][su] = dp(n-1,su-1)
         return cache[n][su]
 
-
-
-
 ans = 0
 for i in range(10):
     ans += dp(n-1, i)
 print(ans % mod)
 
 #18404112
-#18404112
+#18404112(2~5)
 
 
 

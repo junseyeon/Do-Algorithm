@@ -7,17 +7,21 @@
 5 8 17 / 11
 0 0 0
 '''
-l = p = v = 1
-while l != 0 and p != 0 and v != 0:
+n = 1
+while True:
     l, p, v = map(int, input().split())
     if l == 0 and p == 0 and v == 0: break
     cnt = 0
     cnt += (v//p) * l
-    cnt += (v%p)
-    print(cnt)
+    cnt += min(l,(v%p))     # 나머지의 개수가 L일동안 사용할 수 있는 조건을 초과할 수 있음으로
+    print(f'Case {n}:', cnt)
+    #print(f'Case {n}:', (v//p) * l + min(l,(v%p))  )
+    n+=1
 
+'''
+1) min() 사용이 핵심 
+2) 출력문 잘 보기 
+'''
 
-
-1 2 3 4
 
 # 1 2 3 4 5 6 7 8 / 9 10 11 12 13 14 15 16 /17 18 19 20

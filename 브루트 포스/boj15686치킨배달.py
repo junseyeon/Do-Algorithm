@@ -16,7 +16,7 @@ M개의 치킨가게 위치일 때 도시의 총 치킨 거리를 구한다.
 
 from itertools import combinations
 import sys
-sys.stdin = open('input.txt')
+sys.stdin = open('../input.txt')
 input = sys.stdin.readline
 N, M = map(int, input().split())
 
